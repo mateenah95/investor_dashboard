@@ -1,9 +1,11 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const cors = require('cors');
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 const PORT = 3000;
 const APP_VERSION = '1.0.0';
@@ -48,11 +50,15 @@ app.post('/auth', async (req, res) => {
         where: {email: req.body.email}
     });
     if (!user) {
-        return res.status(404).send('User not found');
+        return res.status(404).send({
+            error: 'User not found'
+        });
     }
     const isPasswordValid = bcrypt.compareSync(req.body.password, user.password);
     if (!isPasswordValid) {
-        return res.status(401).send('Invalid password');
+        return res.status(401).send({
+            error: 'Invalid password'
+        });
     }
     const token = jwt.sign(
         {
@@ -79,18 +85,22 @@ app.get('/portfolio', authenticated, (req, res) => {
     res.send(`Welcome to the portfolio of ${req.user.first_name} ${req.user.last_name}`);
 });
 
-app.get('/transactions', authenticated, (req, res) => {
-    res.send(`Welcome to the transactions of ${req.user.first_name} ${req.user.last_name}`);
+app.get('/transactions', authenticated, async (req, res) => {
+    const transactions = await db.Transaction.findAll({
+        where: { user_id: req.user.id }
+    });
+    res.status(200).send({
+        transactions
+    });
 });
 
 app.get('/reports', authenticated, (req, res) => {
-    // Assuming reports are stored in a separate model
     res.send(`Welcome to the reports of ${req.user.first_name} ${req.user.last_name}`);
 }); 
 
 db.sequelize.sync()
   .then((req) => {
-    app.listen(PORT, () => {
+    app.listen(PORT, '0.0.0.0', () => {
         console.log(`Example app listening on port ${PORT}!`);
     })
   })
