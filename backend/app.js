@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-const PORT = 80;
+const PORT = 3000;
 const APP_VERSION = '1.0.0';
 const SALT_ROUNDS = 10;
 const JWT_SECRET = 'my_jwt_secret';
