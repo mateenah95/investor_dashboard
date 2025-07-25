@@ -1,15 +1,19 @@
-# Live Links
+# Live Link (Frontend App)
 - App (Frontend): http://investment-dashboard-app.s3.us-east-2.amazonaws.com/index.html
-- API (Backend): http://3.129.251.86/api/v1
+
+# API Liveness Link
+- To confirm backend API is live and healthy, simply use the publicly accessible health endpoint: /health -> http://3.129.251.86:3000/api/v1/health
 
 # Public Github Repo
 - https://github.com/mateenah95/investor_dashboard/
 
-# How to use the app (public)
-- To use the app, simply use the App (frotend) link listed in the "Live Links" section above
+# How to use/run the app (public/production)
+- To use the app, simply use the public App (frotend) link listed in the "Live Links" section above. 
 
-# How to check API liveness
-- To confirm backend API is live and healthy, simply use the publicly accessible health endpoint: /health -> http://3.129.251.86/api/v1/health
+# How to use/run the app (local/development)
+- Clone the public github repo listed above which holds the frontend and backend code in their respective folders
+- To run the backend, ensure you have Node js installed on your machine. If it is not already installed, install it. Then cd into the backend folder and run the `npm install` command to install the node package requirements for the API. Once installed, simply run the API server using `node app.js`.
+- To run the frontend locally, ensure you have Node js installed on your machine. If it is not already installed, install it first. Then cd into the frontend folder and run the `npm install` command to install the node package requirements for the frontend app. Once installed, simply run the frontend app using `npm run dev`.
 
 # Stack Used
 
@@ -31,8 +35,14 @@
 -- git, github
 -- PM2
 
-# Objectives:
+# High Level Components
+- Frontend layer: SPA written in React
+- Backend layer: REST API written in JS running in a Node js environment on a AWS linux server
+- Data layer:
+-- A local SQLite file on the linux server
+-- AWS S3 buckets to save and host user reports 
 
+# App Objectives:
 - View portfolio performance
 - Track recent changes
 - Download quarterly reports
@@ -40,13 +50,15 @@
 # Frontend Breakdown
 - The frontend app was built in React (HTML, CSS, JS) as per requirements. 
 
-- For routing, react router dom libraty due to strong integration with react and ease of use. Similar for state management, react's built in context API was used due to small nature of the product, did not justify the overhead to use redux. 
+- For frontend routing, React router dom libraty due to strong integration with React and ease of use.
+
+- For frontend state management, React's built in context API was used due to small nature of the product, did not justify the overhead to use Redux. 
 
 - Bootstrap was mainly used for styling, layout, containers and other ready to use frontend components.
 
-- Lucide React was used for icons library - good integration with React, Vue and other frameworks.
+- Lucide React was used for icons library - due to good integration with React, Vue and other frameworks.
 
-- React Google charts was used for charting library - easy to read docs and usage interface.
+- React Google Charts library was used for charting - due to easy to read docs and usage interface.
 
 - React Toastify was used for notification library - to show success and error message toasts to the user. 
 
@@ -86,3 +98,11 @@
 -- /transactions (GET Endpoint / Protected) --> This protected endpoint is used to return the data for the user's transaction history.
 -- /reports (GET Endpoint / Protected) --> This protected endpoint is used to return a user's quarterly reports data and links.
 
+- All user passwords were encrypted before saving and bcypt js library was used to compare the plaintext password to the encrypted password
+
+- To protect API routes, an authentication middleware was used which extracted the JWT authentication token from the incoming HTTP request headers, validated it and extracted the user information from it. If no authentication token, invalid tokens or expired tokens were passed, the user is revoked access to the protected routes.
+
+# Infrastructure Breakdown
+- The frontend was compiled down to plain HTML, CSS and JS and able to be hosted on a public AWS S3 bucket - thus due to ease of deployment, this was used to host the frontend. The bucket had to be made publicly accessible for this to work - which was done via a quick policy change and checkbox in the bucket settings.
+
+- The backend API was deployed on a linux server on AWS. Chose a server with minimal specs to stay within the AWS free tier. An elastic IP address was attached to the EC2 instance to make the public IP for the instance static to prevent changing on restarts. 
