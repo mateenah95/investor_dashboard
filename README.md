@@ -86,10 +86,10 @@
 - Download quarterly reports
 
 #  Business Assumptions: 
-- For purposes of this project, it was assumed that the platform and investor are only using stocks and crypto in their portfolio
-- The dashboard is oriented towards the value of the investment rather than the value of the portfolio as the latter required live asset rates from an external API.
-- For the reports functionality, it was assumed that the PDF reports were to be mocked - i.e. the user can still see all the available reports by year, and download any of the PDFs for the available reports - however, the PDF itself will not contain an actual report, just the year and quarter the report is for.
-- Mock reports were pre-uploaded to S3 buckets from where they will be hosted and served.
+- It was assumed that the platform and investor are only using stocks and crypto in their portfolio (due to lack of detailed industry knowledge about financial instruments).
+- The dashboard is oriented towards the value of the investment rather than the current market value of the portfolio as the latter required live asset rates from an external API. Most of the data depends on transactions stored in the transactions table and some data (e.g. portfolio investment over time) is mocked.
+- For the reports page/functionality, it was assumed that the PDF reports were to be mocked - i.e. the user can still see all the available reports by year, and download any of the PDFs for the available reports - however, the PDF itself will not contain an actual report, it will just contain the year and quarter the report is for. Mock reports were pre-uploaded to S3 buckets from where they will be hosted and served for viewing/downloading.
+- For the purposes of the project, the investment/portfolio page was built around trnsactions. 
 
 # Frontend Breakdown
 - The frontend app was built in React (HTML, CSS, JS) as per requirements. 
