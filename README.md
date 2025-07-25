@@ -152,3 +152,11 @@
 - The frontend was compiled down to plain HTML, CSS and JS and able to be hosted on a public AWS S3 bucket - thus due to ease of deployment, this was used to host the frontend. The bucket had to be made publicly accessible for this to work - which was done via a quick policy change and checkbox in the bucket settings.
 
 - The backend API was deployed on a linux server on AWS. Chose a server with minimal specs to stay within the AWS free tier. An elastic IP address was attached to the EC2 instance to make the public IP for the instance static to prevent changing on restarts. 
+
+# Potential Improvements
+
+- Refactor the reports react page into smaller components and improve UI design for Reports page.
+- Enable cross region replication for the frontend bucket and enable CDN delivery optimization - AWS CloudFront.
+- Put the EC2 backend API server into a autoscaling group to allow it to scale horizontally
+- Put the auto scaling group behind an application load balancer to allow it distribute traffic based on an approprite routing stragegy.
+- Use a managed database such as PostgresSQL on RDS opposed to a local file based database which is succesptible to be corrupted if server or storage experiences a problem for example.
