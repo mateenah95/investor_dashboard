@@ -18,29 +18,29 @@
 # Stack Used
 
 - Backend 
--- Javascript (language)
--- Node js (JS Runtime)
--- Express js (API Server)
--- Sequelize (ORM)
--- Sqlite (Local File Based Database)
+  * Javascript (language)
+  * Node js (JS Runtime)
+  * Express js (API Server)
+  * Sequelize (ORM)
+  * Sqlite (Local File Based Database)
 
 - Frontend
--- Javascript (language)
--- React (frontend framework)
--- HTML, CSS, JS
+  * Javascript (language)
+  * React (frontend framework)
+  * HTML, CSS, JS
 
 - Infrastructure/Tools
--- aws ec2 (backend api deployment)
--- aws s3 (frontend hosting and report files hosting)
--- git, github
--- PM2
+  * aws ec2 (backend api deployment)
+  * aws s3 (frontend hosting and report files hosting)
+  * git, github
+  * PM2 - process manager 
 
 # High Level Components
 - Frontend layer: SPA written in React
 - Backend layer: REST API written in JS running in a Node js environment on a AWS linux server
 - Data layer:
--- A local SQLite file on the linux server
--- AWS S3 buckets to save and host user reports 
+  * A local SQLite file on the linux server
+  * AWS S3 buckets to save and host user reports 
 
 # App Objectives:
 - View portfolio performance
@@ -65,10 +65,10 @@
 - The frontend was compiled down from JSX to regular HTML, CSS and JS using `npm run build` and the output was deployed on public AWS S3 bucket.
 
 - The app has 4 total pages:
--- The login page
--- The portfolio page: /portfolio
--- The transactions page: /transactions
--- The reports page: /reports
+  * The login page
+  * The portfolio page: /portfolio
+  * The transactions page: /transactions
+  * The reports page: /reports
 
 - The login page simply allows a user to login if he/she has a valid account on the platform.
 
@@ -92,11 +92,11 @@
 
 - The backend API is used to serve the data for the frontend app. It provides an interface to the data via a RESTful API. The endpoints available on the API are:
 
--- /health (GET Endpoint / Non Protected) -> This unprotected endpoint serves as a liveness and readiness check for the API server
--- /auth (POST Endpoint / Non Protected) -> This unprotected endpoint allows registered users to authenticate. If successfully authenticated, they are issued with a JWT token to be used to authenticate subsequent protected API endpoint.
--- /portfolio (GET Endpoint / Protected) --> This protected endpoint is used to return the data for the user's investmet portfolio. Some data is mocked.
--- /transactions (GET Endpoint / Protected) --> This protected endpoint is used to return the data for the user's transaction history.
--- /reports (GET Endpoint / Protected) --> This protected endpoint is used to return a user's quarterly reports data and links.
+  * /health (GET Endpoint / Non Protected) -> This unprotected endpoint serves as a liveness and readiness check for the API server
+  * /auth (POST Endpoint / Non Protected) -> This unprotected endpoint allows registered users to authenticate. If successfully authenticated, they are issued with a JWT token to be used to authenticate subsequent protected API endpoint.
+  * /portfolio (GET Endpoint / Protected) --> This protected endpoint is used to return the data for the user's investmet portfolio. Some data is mocked.
+  * /transactions (GET Endpoint / Protected) --> This protected endpoint is used to return the data for the user's transaction history.
+  * /reports (GET Endpoint / Protected) --> This protected endpoint is used to return a user's quarterly reports data and links.
 
 - All user passwords were encrypted before saving and bcypt js library was used to compare the plaintext password to the encrypted password
 
