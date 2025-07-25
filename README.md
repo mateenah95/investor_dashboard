@@ -7,7 +7,7 @@
 
 
 # Public Github Repo
-- To view all project files please view following git repository: https://github.com/mateenah95/investor_dashboard/
+- To view all project files please open or clone the following git repository: https://github.com/mateenah95/investor_dashboard/
 
 
 # Screenshots
