@@ -1,5 +1,5 @@
 const PORT = 3000;
-const API_VERSION = '1.0.0';
+const API_VERSION = 'v1';
 const SALT_ROUNDS = 10;
 const JWT_SECRET = 'my_jwt_secret';
 const JWT_EXPIRY = '30m';
