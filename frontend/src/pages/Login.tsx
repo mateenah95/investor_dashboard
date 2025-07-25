@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { UserContext } from '../contexts/UserContext';
 import { useNavigate } from "react-router-dom";
-import {Landmark} from 'lucide-react';
+import { Landmark, LogIn} from 'lucide-react';
 import constants from '../constants';
 import { toast } from 'react-toastify';
 
@@ -75,7 +75,7 @@ function Login() {
                 </div>
                 <br />
                 {error && <div style={{ color: 'red', marginBottom: 16 }}>{error}</div>}
-                <button type="submit" className='btn btn-dark w-100'>Login</button>
+                <button type="submit" className='btn btn-dark w-100 p-2'><LogIn className='mx-2'/>Login</button>
             </form>
         </div>
     );

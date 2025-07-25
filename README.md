@@ -106,3 +106,21 @@
 - The frontend was compiled down to plain HTML, CSS and JS and able to be hosted on a public AWS S3 bucket - thus due to ease of deployment, this was used to host the frontend. The bucket had to be made publicly accessible for this to work - which was done via a quick policy change and checkbox in the bucket settings.
 
 - The backend API was deployed on a linux server on AWS. Chose a server with minimal specs to stay within the AWS free tier. An elastic IP address was attached to the EC2 instance to make the public IP for the instance static to prevent changing on restarts. 
+
+# Screenshots
+
+## Login Page
+![alt text](image-5.png)
+
+## Portfolio Page
+![alt text](image.png)
+
+![alt text](image-1.png)
+
+![alt text](image-2.png)
+
+## Transactions Page
+![alt text](image-3.png)
+
+## Reports Page
+![alt text](image-4.png)
