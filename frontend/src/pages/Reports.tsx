@@ -82,7 +82,7 @@ const Reports = () => {
                                 <div className='card bg-success-subtle m-3 p-3 d-flex flex-column justify-content-between text-start' key={report.id} style={{ height: '175px' }}>
                                     <div className='d-flex justify-content-between'>
                                         <div className='d-flex'>
-                                            <FileText className='me-3' size={50} />
+                                            <FileText className='me-3 text-primary' size={50} />
                                             <div>
                                                 <h4>{report.title}</h4>
                                                 <p>Generated at: {new Date(report.created_at).toLocaleDateString()}</p>
